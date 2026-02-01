@@ -13,16 +13,16 @@ export const Header = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 glass"
+      className="fixed top-4 left-4 right-4 z-50 bg-background/80 backdrop-blur-md border-2 border-border rounded-lg"
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="px-6 py-4">
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">N</span>
+            <div className="w-8 h-8 border-2 border-foreground flex items-center justify-center">
+              <span className="font-bold text-lg">N</span>
             </div>
-            <span className="text-xl font-bold text-foreground">NeuraCo</span>
+            <span className="text-lg font-bold tracking-tight">NeuraCo</span>
           </a>
 
           {/* Desktop Nav */}
@@ -31,7 +31,7 @@ export const Header = () => {
               <a
                 key={item}
                 href={`#${item.toLowerCase().replace(/\s/g, "-")}`}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm uppercase tracking-wider"
               >
                 {item}
               </a>
@@ -44,7 +44,7 @@ export const Header = () => {
               Log In
             </Button>
             <Button variant="hero" size="sm">
-              Get Early Access
+              Get Access
             </Button>
           </div>
 
@@ -70,7 +70,7 @@ export const Header = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(/\s/g, "-")}`}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-muted-foreground hover:text-foreground transition-colors text-sm uppercase tracking-wider"
                   onClick={() => setIsOpen(false)}
                 >
                   {item}
@@ -81,7 +81,7 @@ export const Header = () => {
                   Log In
                 </Button>
                 <Button variant="hero" size="sm">
-                  Get Early Access
+                  Get Access
                 </Button>
               </div>
             </div>

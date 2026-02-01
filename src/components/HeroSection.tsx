@@ -9,9 +9,6 @@ export const HeroSection = () => {
       {/* Animated background graph */}
       <KnowledgeGraph />
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background pointer-events-none" />
-
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -24,20 +21,20 @@ export const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 border-2 border-border mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
-            <span className="text-sm text-muted-foreground">Now in Beta • Join 1,000+ teams</span>
+            <span className="w-2 h-2 bg-foreground" />
+            <span className="text-xs uppercase tracking-widest text-muted-foreground">Now in Beta</span>
           </motion.div>
 
           {/* Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-foreground">NeuraCo</span>
-            <span className="block gradient-text glow-text">The AI Brain for Remote Teams</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
+            NeuraCo
+            <span className="block text-muted-foreground">The AI Brain for Remote Teams</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
             Chat, documents, tasks, and AI agents — all connected in one intelligent graph.
           </p>
 
@@ -47,25 +44,10 @@ export const HeroSection = () => {
               Get Early Access
             </Button>
             <Button variant="heroOutline" size="xl">
-              <Play className="w-5 h-5" />
+              <Play className="w-4 h-4" />
               Watch Demo
             </Button>
           </div>
-
-          {/* Social proof */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="mt-16 flex flex-wrap items-center justify-center gap-8 text-muted-foreground"
-          >
-            <span className="text-sm">Trusted by teams at</span>
-            <div className="flex items-center gap-8 opacity-60">
-              {["Stripe", "Vercel", "Linear", "Notion"].map((company) => (
-                <span key={company} className="text-lg font-semibold">{company}</span>
-              ))}
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

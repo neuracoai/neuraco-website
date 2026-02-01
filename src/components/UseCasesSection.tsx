@@ -1,33 +1,26 @@
 import { motion } from "framer-motion";
-import { Rocket, Code, Globe } from "lucide-react";
 
 const useCases = [
   {
     title: "For Founders",
     description: "Instant visibility into what's blocked and why. Stop asking for status updates — see the truth in real-time.",
-    icon: Rocket,
-    gradient: "from-amber-500 to-orange-500",
-    benefit: "Save 5+ hours per week on status meetings",
+    benefit: "Save 5+ hours per week",
   },
   {
     title: "For Developers",
     description: "Find specs, discussions, and decisions instantly. No more Slack archaeology or asking \"where was that doc?\"",
-    icon: Code,
-    gradient: "from-primary to-cyan-400",
     benefit: "Reduce context-switching by 60%",
   },
   {
     title: "For Remote Teams",
     description: "No more lost context when team members work across time zones. Everything stays connected and searchable.",
-    icon: Globe,
-    gradient: "from-secondary to-purple-400",
-    benefit: "Async collaboration that actually works",
+    benefit: "Async collaboration that works",
   },
 ];
 
 export const UseCasesSection = () => {
   return (
-    <section className="py-24">
+    <section className="py-24 border-t-2 border-border">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,12 +29,11 @@ export const UseCasesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1 border-2 border-border text-xs uppercase tracking-widest text-muted-foreground mb-6">
             Use Cases
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Built for how{" "}
-            <span className="gradient-text">modern teams</span> work
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+            Built for how modern teams work
           </h2>
         </motion.div>
 
@@ -53,23 +45,14 @@ export const UseCasesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="group relative"
+              className="p-8 border-2 border-border hover:bg-card transition-colors"
             >
-              <div className="h-full p-8 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-300">
-                {/* Icon */}
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${useCase.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                  <useCase.icon className="w-8 h-8 text-white" />
-                </div>
-
-                <h3 className="text-2xl font-semibold mb-4">{useCase.title}</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {useCase.description}
-                </p>
-
-                {/* Benefit tag */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm">
-                  {useCase.benefit}
-                </div>
+              <h3 className="text-xl font-semibold mb-4">{useCase.title}</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
+                {useCase.description}
+              </p>
+              <div className="inline-block px-3 py-1 border border-border text-xs uppercase tracking-wider text-muted-foreground">
+                {useCase.benefit}
               </div>
             </motion.div>
           ))}

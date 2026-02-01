@@ -1,13 +1,6 @@
 import { motion } from "framer-motion";
-import { MessageSquare, FileText, CheckSquare, Search, Bot, AlertTriangle } from "lucide-react";
 
-const tools = [
-  { name: "Slack", icon: MessageSquare },
-  { name: "Notion", icon: FileText },
-  { name: "Jira", icon: CheckSquare },
-  { name: "Google Docs", icon: FileText },
-  { name: "AI Tools", icon: Bot },
-];
+const tools = ["Slack", "Notion", "Jira", "Google Docs", "AI Tools"];
 
 const problems = [
   { text: "Lost context", desc: "Conversations scattered across platforms" },
@@ -18,7 +11,7 @@ const problems = [
 
 export const ProblemSection = () => {
   return (
-    <section className="py-24 relative">
+    <section className="py-24 border-t-2 border-border">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,18 +20,18 @@ export const ProblemSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1 rounded-full bg-destructive/10 text-destructive text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1 border-2 border-border text-xs uppercase tracking-widest text-muted-foreground mb-6">
             The Problem
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Your team is <span className="text-destructive">drowning</span> in tools
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+            Your team is drowning in tools
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Remote teams juggle 5+ disconnected apps every day. Context is lost. Work gets blocked. Nobody knows what's really happening.
           </p>
         </motion.div>
 
-        {/* Tool icons scattered */}
+        {/* Tool list */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -48,15 +41,14 @@ export const ProblemSection = () => {
         >
           {tools.map((tool, i) => (
             <motion.div
-              key={tool.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              key={tool}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-border"
+              className="px-4 py-2 border-2 border-border text-sm uppercase tracking-wider text-muted-foreground"
             >
-              <tool.icon className="w-5 h-5 text-muted-foreground" />
-              <span className="text-muted-foreground">{tool.name}</span>
+              {tool}
             </motion.div>
           ))}
         </motion.div>
@@ -70,11 +62,11 @@ export const ProblemSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="relative p-6 rounded-xl bg-card border border-destructive/20 group hover:border-destructive/40 transition-colors"
+              className="p-6 border-2 border-border hover:bg-card transition-colors"
             >
-              <AlertTriangle className="w-8 h-8 text-destructive/60 mb-4" />
+              <span className="text-xs uppercase tracking-widest text-muted-foreground mb-4 block">0{i + 1}</span>
               <h3 className="text-xl font-semibold mb-2">{problem.text}</h3>
-              <p className="text-muted-foreground">{problem.desc}</p>
+              <p className="text-muted-foreground text-sm">{problem.desc}</p>
             </motion.div>
           ))}
         </div>
