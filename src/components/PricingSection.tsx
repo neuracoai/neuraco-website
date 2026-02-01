@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Check, Sparkles } from "lucide-react";
+import { Check } from "lucide-react";
 
 const plans = [
   {
@@ -16,7 +16,7 @@ const plans = [
       "Community support",
     ],
     cta: "Start Free",
-    popular: false,
+    featured: false,
   },
   {
     name: "Pro",
@@ -33,7 +33,7 @@ const plans = [
       "API access",
     ],
     cta: "Start Free Trial",
-    popular: true,
+    featured: true,
   },
   {
     name: "Enterprise",
@@ -50,17 +50,14 @@ const plans = [
       "SLA guarantee",
     ],
     cta: "Contact Sales",
-    popular: false,
+    featured: false,
   },
 ];
 
 export const PricingSection = () => {
   return (
-    <section id="pricing" className="py-24 relative">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="pricing" className="py-24 border-t-2 border-border bg-card">
+      <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,14 +65,13 @@ export const PricingSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1 border-2 border-border text-xs uppercase tracking-widest text-muted-foreground mb-6">
             Pricing
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Simple pricing,{" "}
-            <span className="gradient-text">powerful teams</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+            Simple pricing, powerful teams
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Start free, scale as you grow. No surprises, no hidden fees.
           </p>
         </motion.div>
@@ -88,40 +84,36 @@ export const PricingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className={`relative p-8 rounded-2xl ${
-                plan.popular
-                  ? "bg-gradient-to-b from-primary/10 to-card border-2 border-primary/50"
-                  : "bg-card border border-border"
+              className={`relative p-8 border-2 ${
+                plan.featured ? "border-foreground bg-background" : "border-border"
               }`}
             >
-              {/* Popular badge */}
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-primary to-secondary text-primary-foreground text-sm font-medium">
-                  <Sparkles className="w-4 h-4" />
-                  Most Popular
+              {plan.featured && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-foreground text-background text-xs uppercase tracking-widest">
+                  Popular
                 </div>
               )}
 
               <div className="text-center mb-8">
-                <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
+                <h3 className="text-lg font-semibold mb-2 uppercase tracking-wider">{plan.name}</h3>
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-muted-foreground">/{plan.period}</span>
+                  <span className="text-muted-foreground text-sm">/{plan.period}</span>
                 </div>
-                <p className="text-muted-foreground mt-2">{plan.description}</p>
+                <p className="text-muted-foreground mt-2 text-sm">{plan.description}</p>
               </div>
 
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                    <span className="text-muted-foreground">{feature}</span>
+                    <Check className="w-4 h-4 mt-0.5 shrink-0" />
+                    <span className="text-muted-foreground text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <Button
-                variant={plan.popular ? "hero" : "heroOutline"}
+                variant={plan.featured ? "hero" : "heroOutline"}
                 className="w-full"
                 size="lg"
               >
