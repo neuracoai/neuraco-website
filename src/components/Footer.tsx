@@ -16,7 +16,7 @@ export const Footer = () => {
               <div className="w-8 h-8 border-2 border-foreground flex items-center justify-center">
                 <span className="font-bold text-lg">N</span>
               </div>
-              <span className="text-lg font-bold tracking-tight">NeuraCo</span>
+              <span className="text-lg font-bold tracking-tight">Praxiym</span>
             </div>
             <p className="text-muted-foreground text-sm">
               The AI brain for remote teams.
@@ -46,7 +46,7 @@ export const Footer = () => {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2026 NeuraCo. All rights reserved.
+            © 2026 Praxiym. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             {["Twitter", "LinkedIn", "GitHub"].map((social) => (

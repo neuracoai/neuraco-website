@@ -22,7 +22,7 @@ export const Header = () => {
             <div className="w-8 h-8 border-2 border-foreground flex items-center justify-center">
               <span className="font-bold text-lg">N</span>
             </div>
-            <span className="text-lg font-bold tracking-tight">NeuraCo</span>
+            <span className="text-lg font-bold tracking-tight">Praxiym</span>
           </a>
 
           {/* Desktop Nav */}

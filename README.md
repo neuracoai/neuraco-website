@@ -1,8 +1,8 @@
-# NeuraCo Website
+# Praxiym Website
 
 ## Project info
 
-Marketing website for NeuraCo.
+Marketing website for Praxiym.
 
 ## How can I edit this code?
 

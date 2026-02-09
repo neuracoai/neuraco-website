@@ -29,7 +29,7 @@ export const HeroSection = () => {
 
           {/* Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
-            NeuraCo
+            Praxiym
             <span className="block text-muted-foreground">The AI Brain for Remote Teams</span>
           </h1>
 

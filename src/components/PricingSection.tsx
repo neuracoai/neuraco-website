@@ -7,7 +7,7 @@ const plans = [
     name: "Free",
     price: "$0",
     period: "forever",
-    description: "Perfect for trying NeuraCo with your team",
+    description: "Perfect for trying Praxiym with your team",
     features: [
       "Up to 3 users",
       "Chat & docs",

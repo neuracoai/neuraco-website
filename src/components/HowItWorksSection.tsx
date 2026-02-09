@@ -4,7 +4,7 @@ const steps = [
   {
     number: "01",
     title: "Your team works naturally",
-    description: "Chat, write docs, create tasks — just like you always do. NeuraCo feels familiar from day one.",
+    description: "Chat, write docs, create tasks — just like you always do. Praxiym feels familiar from day one.",
   },
   {
     number: "02",

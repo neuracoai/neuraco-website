@@ -24,7 +24,7 @@ export const FinalCTASection = () => {
           </p>
 
           <Button variant="cta" size="xl" className="group">
-            Join NeuraCo
+            Join Praxiym
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
 

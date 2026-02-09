@@ -22,7 +22,7 @@ export const SolutionSection = () => {
             One source of truth.
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            NeuraCo connects everything your team does into a single knowledge graph that AI can reason over.
+            Praxiym connects everything your team does into a single knowledge graph that AI can reason over.
           </p>
         </motion.div>
 
@@ -69,7 +69,7 @@ export const SolutionSection = () => {
           </div>
 
           {/* Connection lines SVG */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ width: "100%", height: "260px", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ width: "100%", height: "260px", top: "50%", left: "70%", transform: "translate(-50%, -50%)" }}>
             {connections.map((_, i) => {
               const angle = (i * 360) / connections.length - 90;
               const radius = 120;
