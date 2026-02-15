@@ -21,10 +21,10 @@ export const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 border-2 border-border mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 border-2 border-emerald-500/40 bg-emerald-500/10 mb-8"
           >
-            <span className="w-2 h-2 bg-foreground" />
-            <span className="text-xs uppercase tracking-widest text-muted-foreground">Now in Beta</span>
+            <span className="w-2 h-2 bg-emerald-400" />
+            <span className="text-xs uppercase tracking-widest text-emerald-300">In Alpha</span>
           </motion.div>
 
           {/* Headline */}

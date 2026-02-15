@@ -64,7 +64,8 @@ Then host the output using your preferred provider (e.g., Vercel, Netlify, Cloud
 
 The landing page includes:
 
-- Supabase Auth email magic-link login from the `Log In` and `Start Free` buttons.
+- Supabase Auth email/password login and sign-up from the `/login` page.
+- Authenticated account management from the `/settings` page (plan, usage, members, security, and logout).
 - Stripe payment links from the `Pro` and `Enterprise` pricing buttons.
 
 Add these environment variables in your deployment/platform:

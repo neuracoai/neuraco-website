@@ -1,35 +1,29 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import { sendSupabaseMagicLink } from "@/lib/integrations";
-import { toast } from "@/hooks/use-toast";
+import { useEffect, useState } from "react";
+import { getAuthChangeEventName, isSupabaseAuthenticated } from "@/lib/integrations";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const navItems = ["Features", "How it Works", "Pricing"];
 
-  const handleLogIn = async () => {
-    const email = window.prompt("Enter your email to receive a sign-in link");
-    if (!email) {
-      return;
-    }
+  useEffect(() => {
+    const syncAuthState = () => {
+      setIsAuthenticated(isSupabaseAuthenticated());
+    };
 
-    const result = await sendSupabaseMagicLink(email);
-    if (!result.ok) {
-      toast({
-        title: "Login unavailable",
-        description: result.error,
-      });
-      return;
-    }
+    syncAuthState();
+    window.addEventListener("storage", syncAuthState);
+    window.addEventListener(getAuthChangeEventName(), syncAuthState);
 
-    toast({
-      title: "Check your inbox",
-      description: "We sent you a Supabase sign-in link.",
-    });
-  };
+    return () => {
+      window.removeEventListener("storage", syncAuthState);
+      window.removeEventListener(getAuthChangeEventName(), syncAuthState);
+    };
+  }, []);
 
   return (
     <motion.header
@@ -63,8 +57,10 @@ export const Header = () => {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm" onClick={handleLogIn}>
-              Log In
+            <Button variant="ghost" size="sm" asChild>
+              <a href={isAuthenticated ? "/settings" : "/login"}>
+                {isAuthenticated ? "Settings" : "Log In"}
+              </a>
             </Button>
             <Button variant="hero" size="sm" asChild>
               <a href="#pricing">
@@ -102,8 +98,10 @@ export const Header = () => {
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-2">
-                <Button variant="ghost" size="sm" onClick={handleLogIn}>
-                  Log In
+                <Button variant="ghost" size="sm" asChild>
+                  <a href={isAuthenticated ? "/settings" : "/login"} onClick={() => setIsOpen(false)}>
+                    {isAuthenticated ? "Settings" : "Log In"}
+                  </a>
                 </Button>
                 <Button variant="hero" size="sm" asChild>
                   <a href="#pricing" onClick={() => setIsOpen(false)}>

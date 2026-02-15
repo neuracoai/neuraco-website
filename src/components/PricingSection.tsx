@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
-import { PricingPlan, getStripePaymentLink, sendSupabaseMagicLink } from "@/lib/integrations";
+import { PricingPlan, getStripePaymentLink, isSupabaseAuthenticated } from "@/lib/integrations";
 import { toast } from "@/hooks/use-toast";
 
 const plans = [
@@ -60,26 +60,9 @@ const plans = [
 ];
 
 export const PricingSection = () => {
-  const handlePlanClick = async (planId: PricingPlan) => {
+  const handlePlanClick = (planId: PricingPlan) => {
     if (planId === "free") {
-      const email = window.prompt("Enter your email to receive a sign-in link");
-      if (!email) {
-        return;
-      }
-
-      const result = await sendSupabaseMagicLink(email);
-      if (!result.ok) {
-        toast({
-          title: "Login unavailable",
-          description: result.error,
-        });
-        return;
-      }
-
-      toast({
-        title: "Check your inbox",
-        description: "We sent you a Supabase sign-in link.",
-      });
+      window.location.assign(isSupabaseAuthenticated() ? "/settings" : "/login");
       return;
     }
 
