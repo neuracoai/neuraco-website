@@ -23,9 +23,11 @@ export const FinalCTASection = () => {
             Join forward-thinking teams who've unified their workspace. Get early access today.
           </p>
 
-          <Button variant="cta" size="xl" className="group">
-            Join Praxiym
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          <Button variant="cta" size="xl" className="group" asChild>
+            <a href="#pricing">
+              Join Praxiym
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
           </Button>
 
           <p className="text-muted-foreground mt-6 text-xs uppercase tracking-widest">

@@ -40,8 +40,8 @@ export const HeroSection = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant="hero" size="xl">
-              Get Early Access
+            <Button variant="hero" size="xl" asChild>
+              <a href="#pricing">Get Early Access</a>
             </Button>
             <Button variant="heroOutline" size="xl">
               <Play className="w-4 h-4" />

@@ -2,11 +2,34 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { sendSupabaseMagicLink } from "@/lib/integrations";
+import { toast } from "@/hooks/use-toast";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = ["Features", "How it Works", "Pricing"];
+
+  const handleLogIn = async () => {
+    const email = window.prompt("Enter your email to receive a sign-in link");
+    if (!email) {
+      return;
+    }
+
+    const result = await sendSupabaseMagicLink(email);
+    if (!result.ok) {
+      toast({
+        title: "Login unavailable",
+        description: result.error,
+      });
+      return;
+    }
+
+    toast({
+      title: "Check your inbox",
+      description: "We sent you a Supabase sign-in link.",
+    });
+  };
 
   return (
     <motion.header
@@ -40,11 +63,13 @@ export const Header = () => {
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" onClick={handleLogIn}>
               Log In
             </Button>
-            <Button variant="hero" size="sm">
-              Get Access
+            <Button variant="hero" size="sm" asChild>
+              <a href="#pricing">
+                Get Access
+              </a>
             </Button>
           </div>
 
@@ -77,11 +102,13 @@ export const Header = () => {
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-2">
-                <Button variant="ghost" size="sm">
+                <Button variant="ghost" size="sm" onClick={handleLogIn}>
                   Log In
                 </Button>
-                <Button variant="hero" size="sm">
-                  Get Access
+                <Button variant="hero" size="sm" asChild>
+                  <a href="#pricing" onClick={() => setIsOpen(false)}>
+                    Get Access
+                  </a>
                 </Button>
               </div>
             </div>

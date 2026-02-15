@@ -9,6 +9,28 @@ export const Footer = () => {
   return (
     <footer className="border-t-2 border-border py-16">
       <div className="container mx-auto px-6">
+        <div className="mb-12 p-6 border-2 border-border bg-card">
+          <h4 className="font-semibold mb-4 text-xs uppercase tracking-widest">Co-founders</h4>
+          <div className="grid md:grid-cols-2 gap-4">
+            <a
+              href="https://www.linkedin.com/in/cofounder-1"
+              target="_blank"
+              rel="noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+            >
+              Co-founder 1 LinkedIn
+            </a>
+            <a
+              href="https://www.linkedin.com/in/cofounder-2"
+              target="_blank"
+              rel="noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+            >
+              Co-founder 2 LinkedIn
+            </a>
+          </div>
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           {/* Logo and description */}
           <div className="col-span-2 md:col-span-1">

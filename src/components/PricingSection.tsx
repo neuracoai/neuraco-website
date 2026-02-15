@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
+import { PricingPlan, getStripePaymentLink, sendSupabaseMagicLink } from "@/lib/integrations";
+import { toast } from "@/hooks/use-toast";
 
 const plans = [
   {
+    id: "free" as PricingPlan,
     name: "Free",
     price: "$0",
     period: "forever",
@@ -19,6 +22,7 @@ const plans = [
     featured: false,
   },
   {
+    id: "pro" as PricingPlan,
     name: "Pro",
     price: "$15",
     period: "per user/month",
@@ -36,6 +40,7 @@ const plans = [
     featured: true,
   },
   {
+    id: "enterprise" as PricingPlan,
     name: "Enterprise",
     price: "Custom",
     period: "contact us",
@@ -55,6 +60,41 @@ const plans = [
 ];
 
 export const PricingSection = () => {
+  const handlePlanClick = async (planId: PricingPlan) => {
+    if (planId === "free") {
+      const email = window.prompt("Enter your email to receive a sign-in link");
+      if (!email) {
+        return;
+      }
+
+      const result = await sendSupabaseMagicLink(email);
+      if (!result.ok) {
+        toast({
+          title: "Login unavailable",
+          description: result.error,
+        });
+        return;
+      }
+
+      toast({
+        title: "Check your inbox",
+        description: "We sent you a Supabase sign-in link.",
+      });
+      return;
+    }
+
+    const paymentLink = getStripePaymentLink(planId);
+    if (!paymentLink) {
+      toast({
+        title: "Stripe is not configured",
+        description: `Set VITE_STRIPE_PAYMENT_LINK_${planId.toUpperCase()} to enable checkout.`,
+      });
+      return;
+    }
+
+    window.location.assign(paymentLink);
+  };
+
   return (
     <section id="pricing" className="py-24 border-t-2 border-border bg-card">
       <div className="container mx-auto px-6">
@@ -116,6 +156,7 @@ export const PricingSection = () => {
                 variant={plan.featured ? "hero" : "heroOutline"}
                 className="w-full"
                 size="lg"
+                onClick={() => handlePlanClick(plan.id)}
               >
                 {plan.cta}
               </Button>

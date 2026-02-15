@@ -59,3 +59,19 @@ npm run build
 ```
 
 Then host the output using your preferred provider (e.g., Vercel, Netlify, Cloudflare Pages, S3).
+
+## Integrations
+
+The landing page includes:
+
+- Supabase Auth email magic-link login from the `Log In` and `Start Free` buttons.
+- Stripe payment links from the `Pro` and `Enterprise` pricing buttons.
+
+Add these environment variables in your deployment/platform:
+
+```sh
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+VITE_STRIPE_PAYMENT_LINK_PRO=https://buy.stripe.com/...
+VITE_STRIPE_PAYMENT_LINK_ENTERPRISE=https://buy.stripe.com/...
+```
